@@ -38,8 +38,6 @@ NOTE: if you run into any compilation error you can always debug the error with 
 
 # Themes
 
-![image](https://github.com/Dozzergeeky/Rustodian/assets/69168154/18754f26-206d-4152-87df-f7d865ac1e20)
-
 ### Premade
 
 You can press `CTRL` + `ALT` + `S` to open the Theme Selector.
