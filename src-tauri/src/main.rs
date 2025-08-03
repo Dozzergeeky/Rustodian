@@ -40,7 +40,7 @@ fn save_file(path: String, content: String) {
 }
 
 fn save_config() {
-    if let Some(proj_dirs) = ProjectDirs::from("com", "Fextify", "Data") {
+    if let Some(proj_dirs) = ProjectDirs::from("com", "Rustodian", "Data") {
         let dir = proj_dirs.data_dir();
         let exists = &dir.join("config.json").exists();
 
