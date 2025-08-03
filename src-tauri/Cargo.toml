@@ -1,5 +1,5 @@
 [package]
-name = "fextify"
+name = "rustodian"
 version = "1.1.5"
 description = "A text editor."
 authors = ["you"]
