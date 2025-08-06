@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - 'v1.2.0'
+    - 'v1.2.1'
 
 jobs:
   build-windows:
@@ -48,5 +48,11 @@ jobs:
           files: |
             src-tauri/target/release/bundle/msi/*.msi
             src-tauri/target/release/bundle/exe/*.exe
+              releases/v1.2.1/rustodian_1.2.1_aarch64.dmg
+              releases/v1.2.1/rustodian_1.2.1_x64-setup.exe
+              releases/v1.2.1/rustodian_1.2.1_x64_en-US.msi
+              releases/v1.2.1/rustodian_aarch64.app.tar.gz
+              releases/v1.2.1/Rustodian.1.2.1.zip
+              releases/v1.2.1/Rustodian.1.2.1.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
