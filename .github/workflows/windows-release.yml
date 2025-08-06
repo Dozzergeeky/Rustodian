@@ -1,0 +1,52 @@
+name: Build Windows Installers
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v1.2.0'
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: x86_64-pc-windows-msi
+          override: true
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Install Tauri CLI
+        run: |
+          cargo install tauri-cli
+
+      - name: Build Tauri app (Windows)
+        run: |
+          npm run tauri build
+
+      - name: Find .exe and .msi files
+        run: |
+          dir src-tauri\target\release\bundle\msi
+          dir src-tauri\target\release\bundle\exe
+
+      - name: Upload installers to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            src-tauri/target/release/bundle/msi/*.msi
+            src-tauri/target/release/bundle/exe/*.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
